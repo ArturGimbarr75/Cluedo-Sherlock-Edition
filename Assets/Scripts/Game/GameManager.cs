@@ -43,5 +43,37 @@ public class GameManager : MonoBehaviour
 					Players[i].Suspects.Add(suspect, OwnStatus.Unknown);
 			}
 		}
+
+		foreach (Weapon weapon in WEAPONS)
+		{
+			if (weapons.HasFlag(weapon))
+				mainPlayer.Weapons.Add(weapon, OwnStatus.Own);
+			else
+				mainPlayer.Weapons.Add(weapon, OwnStatus.NotOwn);
+
+			for (int i = 1; i < Players.Count; i++)
+			{
+				if (weapons.HasFlag(weapon))
+					Players[i].Weapons.Add(weapon, OwnStatus.NotOwn);
+				else
+					Players[i].Weapons.Add(weapon, OwnStatus.Unknown);
+			}
+		}
+
+		foreach (Location location in LOCATIONS)
+		{
+			if (locations.HasFlag(location))
+				mainPlayer.Rooms.Add(location, OwnStatus.Own);
+			else
+				mainPlayer.Rooms.Add(location, OwnStatus.NotOwn);
+
+			for (int i = 1; i < Players.Count; i++)
+			{
+				if (locations.HasFlag(location))
+					Players[i].Rooms.Add(location, OwnStatus.NotOwn);
+				else
+					Players[i].Rooms.Add(location, OwnStatus.Unknown);
+			}
+		}
 	}
 }
