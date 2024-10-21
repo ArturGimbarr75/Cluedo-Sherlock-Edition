@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-public class PlayerInformation : MonoBehaviour
+public class PlayerInformation
 {
     public string Name;
     public int KnownCardsCount => Suspects.Count + Weapons.Count + Rooms.Count;
@@ -15,5 +14,15 @@ public class PlayerInformation : MonoBehaviour
 	{
 		Name = name;
 		TotalCardsCount = totalCardsCount;
+	}
+
+	public override bool Equals(object other)
+	{
+		return other is PlayerInformation player && Name == player.Name;
+	}
+
+	public override int GetHashCode()
+	{
+		return Name.GetHashCode();
 	}
 }
