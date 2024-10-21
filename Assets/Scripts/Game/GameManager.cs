@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 	public static readonly Weapon[] WEAPONS = (Weapon[])System.Enum.GetValues(typeof(Weapon));
 	public static readonly Location[] LOCATIONS = (Location[])System.Enum.GetValues(typeof(Location));
 
-	public void Awake()
+	private void Awake()
 	{
 		LoadPlayers();
 	}
