@@ -10,22 +10,24 @@ public static class StreamingAssetsHelper
 
 	public static void SavePlayers(List<PlayerLine> playerLines)
 	{
-		File.WriteAllLines(PLAYERS_PATH, playerLines.Select(p => $"{p.PlayerName.text} {p.gameObject.activeSelf}").Prepend($"{playerLines.Count}"));
+		File.WriteAllLines(PLAYERS_PATH, playerLines
+										.Select(p => $"{p.Name.text} {p.gameObject.activeSelf} {p.CardsCount}")
+										.Prepend($"{playerLines.Count}"));
 	}
 
-	public static List<(string name, bool active)> LoadPlayers()
+	public static List<(string name, bool active, int cardsCount)> LoadPlayers()
 	{
 		if (!File.Exists(PLAYERS_PATH))
-			return new List<(string name, bool active)>();
+			return new();
 
 		string[] lines = File.ReadAllLines(PLAYERS_PATH);
 		int count = int.Parse(lines[0]);
-		List<(string name, bool active)> players = new(count);
+		List<(string name, bool active, int cardsCount)> players = new(count);
 
 		for (int i = 1; i < count + 1; i++)
 		{
 			string[] player = lines[i].Split(' ');
-			players.Add((string.Join(" ", player[0..^1]), bool.Parse(player[^1])));
+			players.Add((string.Join(" ", player[0..^2]), bool.Parse(player[^2]), int.Parse(player[^1])));
 		}
 
 		return players;
