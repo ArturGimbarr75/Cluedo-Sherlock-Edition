@@ -4584,6 +4584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999037466}
   - component: {fileID: 1999037467}
+  - component: {fileID: 1999037468}
   m_Layer: 5
   m_Name: GridPlayerLinePrefab
   m_TagString: Untagged
@@ -4638,6 +4639,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1999037468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999037465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3b52d658b52142b4ada0b08a88b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerName: {fileID: 968741538}
+  _suspectsContent: {fileID: 1141148063}
+  _weaponsContent: {fileID: 508706703}
+  _roomsContent: {fileID: 2099828473}
+  _imageHolderPrefab: {fileID: 2132807572}
+  _ownsImage: {fileID: 21300000, guid: edd42f0ac979c4044b66f16a35601d43, type: 3}
+  _notOwnsImage: {fileID: 21300000, guid: ce9f511106816bf41a6c5af6a3002087, type: 3}
+  _unknownImage: {fileID: 21300000, guid: d2eb4b0c07859f248831ef10203a6c1f, type: 3}
 --- !u!1 &2036884817
 GameObject:
   m_ObjectHideFlags: 0
