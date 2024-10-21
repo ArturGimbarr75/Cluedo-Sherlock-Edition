@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-public class PlayerInformation : MonoBehaviour
+public class PlayerInformation
 {
     public string Name;
     public int KnownCardsCount => Suspects.Count + Weapons.Count + Rooms.Count;
