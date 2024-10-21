@@ -22,7 +22,7 @@ public class PlayerGridColumn : MonoBehaviour
 	private Dictionary<Weapon, Image> _weapons = new();
 	private Dictionary<Location, Image> _rooms = new();
 
-	private void Start()
+	private void Awake()
 	{
 		InitCards();
 	}
@@ -36,7 +36,7 @@ public class PlayerGridColumn : MonoBehaviour
 
 			var card = Instantiate(_imageHolderPrefab, _suspectsContent);
 			card.gameObject.SetActive(true);
-			Image image = card.GetComponentInChildren<Image>();
+			Image image = card.transform.GetChild(0).GetComponent<Image>();
 			_suspects.Add(suspect, image);
 		}
 
@@ -47,7 +47,7 @@ public class PlayerGridColumn : MonoBehaviour
 
 			var card = Instantiate(_imageHolderPrefab, _weaponsContent);
 			card.gameObject.SetActive(true);
-			Image image = card.GetComponentInChildren<Image>();
+			Image image = card.transform.GetChild(0).GetComponent<Image>();
 			_weapons.Add(weapon, image);
 		}
 
@@ -58,7 +58,7 @@ public class PlayerGridColumn : MonoBehaviour
 
 			var card = Instantiate(_imageHolderPrefab, _roomsContent);
 			card.gameObject.SetActive(true);
-			Image image = card.GetComponentInChildren<Image>();
+			Image image = card.transform.GetChild(0).GetComponent<Image>();
 			_rooms.Add(room, image);
 		}
 	}
@@ -70,6 +70,12 @@ public class PlayerGridColumn : MonoBehaviour
 
 	public void SetCardsState(PlayerInformation information)
 	{
+		if (information == null)
+			return;
+
+		if (_suspects.Count == 0 || _weapons.Count == 0 || _rooms.Count == 0)
+			return;
+
 		foreach (var suspect in _suspects)
 		{
 			if (information.Suspects.TryGetValue(suspect.Key, out OwnStatus status))
