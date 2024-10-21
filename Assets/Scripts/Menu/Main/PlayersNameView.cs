@@ -30,6 +30,7 @@ public class PlayersNameView : MonoBehaviour
 			{
 				PlayerLines[i].Name.text = players[i].name;
 				PlayerLines[i].gameObject.SetActive(players[i].active);
+				PlayerLines[i].CardsCount.text = players[i].cardsCount.ToString();
 			}
 
 			SetNewCount(count);

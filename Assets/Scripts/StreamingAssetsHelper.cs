@@ -11,7 +11,7 @@ public static class StreamingAssetsHelper
 	public static void SavePlayers(List<PlayerLine> playerLines)
 	{
 		File.WriteAllLines(PLAYERS_PATH, playerLines
-										.Select(p => $"{p.Name.text} {p.gameObject.activeSelf} {p.CardsCount}")
+										.Select(p => $"{p.Name.text} {p.gameObject.activeSelf} {p.CardsCount.text}")
 										.Prepend($"{playerLines.Count}"));
 	}
 
