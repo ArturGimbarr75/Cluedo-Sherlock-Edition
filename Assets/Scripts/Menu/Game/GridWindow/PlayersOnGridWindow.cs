@@ -11,9 +11,14 @@ public class PlayersOnGridWindow : MonoBehaviour
 
 	private Dictionary<PlayerInformation, PlayerGridColumn> _players = new();
 
-	private void Start()
+	private void Awake()
 	{
 		InitPlayers();
+	}
+
+	private void Start()
+	{
+		UpdatePlayers();
 	}
 
 	private void InitPlayers()
