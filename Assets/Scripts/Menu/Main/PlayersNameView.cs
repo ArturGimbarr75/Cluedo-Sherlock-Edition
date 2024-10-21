@@ -28,8 +28,9 @@ public class PlayersNameView : MonoBehaviour
 			SetNewCount(players.Count);
 			for (int i = 0; i < players.Count; i++)
 			{
-				PlayerLines[i].PlayerName.text = players[i].name;
+				PlayerLines[i].Name.text = players[i].name;
 				PlayerLines[i].gameObject.SetActive(players[i].active);
+				PlayerLines[i].CardsCount.text = players[i].cardsCount.ToString();
 			}
 
 			SetNewCount(count);
@@ -62,7 +63,7 @@ public class PlayersNameView : MonoBehaviour
 		{
 			PlayerLine newPlayerLine = Instantiate(_playerLinePrefab, _playerLinePrefab.transform.parent);
 			newPlayerLine.gameObject.SetActive(true);
-			newPlayerLine.PlayerNumber.text = $"{i + 1}.";
+			newPlayerLine.Number.text = $"{i + 1}.";
 			PlayerLines.Add(newPlayerLine);
 		}
 	}

@@ -498,10 +498,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 336383041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5831567b43b36334c87c997ec43be125, type: 3}
+  m_Script: {fileID: 11500000, guid: afe4cfef65677064588f18744da72980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playersNameView: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &880279347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1085,9 +1084,9 @@ RectTransform:
   - {fileID: 980043953}
   m_Father: {fileID: 1456567658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 175, y: -75}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880279348
@@ -1987,6 +1986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646931689}
+  - component: {fileID: 1646931690}
   m_Layer: 5
   m_Name: Players
   m_TagString: Untagged
@@ -2015,6 +2015,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1646931690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646931688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2bf6afb69053d41acd3fc9b3573508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 336383043}
+  _playersNameContent: {fileID: 1456567658}
+  _playerButtonPrefab: {fileID: 880279348}
+  _suspectsContent: {fileID: 313052720}
+  _weaponsContent: {fileID: 1766956152}
+  _roomsContent: {fileID: 761596729}
+  _cardButtonPrefab: {fileID: 1752328173}
+  _ownsImage: {fileID: 21300000, guid: edd42f0ac979c4044b66f16a35601d43, type: 3}
+  _notOwnsImage: {fileID: 21300000, guid: ce9f511106816bf41a6c5af6a3002087, type: 3}
+  _unknownImage: {fileID: 21300000, guid: d2eb4b0c07859f248831ef10203a6c1f, type: 3}
 --- !u!1 &1666445751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,8 +2313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7878c8239b3a0514a8243a3d9007eb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardText: {fileID: 758603885}
   StateImage: {fileID: 779325941}
+  CardText: {fileID: 758603885}
 --- !u!1 &1766956151
 GameObject:
   m_ObjectHideFlags: 0
