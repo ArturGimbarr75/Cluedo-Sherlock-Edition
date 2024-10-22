@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -132,6 +133,45 @@ public class GameManager : MonoBehaviour
 			{
 				AddSuspect(player, request.Suspect);
 				updated = true;
+			}
+		}
+
+		if (player.KnownCardsCount == player.TotalCardsCount)
+		{
+			if (player.Suspects.Any(s => s.Value == OwnStatus.Unknown))
+			{
+				foreach (Suspect suspect in SUSPECTS)
+				{
+					if (player.Suspects[suspect] == OwnStatus.Unknown)
+					{
+						player.Suspects[suspect] = OwnStatus.NotOwn;
+						updated = true;
+					}
+				}
+			}
+
+			if (player.Weapons.Any(w => w.Value == OwnStatus.Unknown))
+			{
+				foreach (Weapon weapon in WEAPONS)
+				{
+					if (player.Weapons[weapon] == OwnStatus.Unknown)
+					{
+						player.Weapons[weapon] = OwnStatus.NotOwn;
+						updated = true;
+					}
+				}
+			}
+
+			if (player.Locations.Any(l => l.Value == OwnStatus.Unknown))
+			{
+				foreach (Location location in LOCATIONS)
+				{
+					if (player.Locations[location] == OwnStatus.Unknown)
+					{
+						player.Locations[location] = OwnStatus.NotOwn;
+						updated = true;
+					}
+				}
 			}
 		}
 
