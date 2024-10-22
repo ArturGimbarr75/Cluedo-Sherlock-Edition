@@ -28,6 +28,8 @@ public class MoveWindowInitializer : MonoBehaviour
 	{
 		InitializeDropdowns();
 		InitializePlayers();
+
+		ResetUI();
 	}
 
 	private void InitializePlayers()
@@ -103,15 +105,19 @@ public class MoveWindowInitializer : MonoBehaviour
 		else
 			request.PlayersWithoutCards = Array.Empty<PlayerInformation>();
 
-		// Reset all
+		ResetUI();
+
+		_gameManager.AddRequest(request);
+	}
+
+	private void ResetUI()
+	{
 		_suspectsDropdown.value = 0;
 		_weaponsDropdown.value = 0;
 		_locationsDropdown.value = 0;
 		_requesterDropdown.value = 0;
 		_responderDropdown.value = 0;
-		foreach (var player in _playersWithoutCards.Keys)
+		foreach (var player in _gameManager.Players)
 			_playersWithoutCards[player] = false;
-
-		_gameManager.AddRequest(request);
 	}
 }
