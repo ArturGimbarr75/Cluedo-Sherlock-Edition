@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerInformation
 {
     public string Name;
-    public int KnownCardsCount => Suspects.Count + Weapons.Count + Locations.Count;
+    public int KnownCardsCount => Suspects.Count(s => s.Value == OwnStatus.Own) + Weapons.Count(w => w.Value == OwnStatus.Own) + Locations.Count(l => l.Value == OwnStatus.Own);
 	public int TotalCardsCount;
 
     public Dictionary<Suspect, OwnStatus> Suspects { get; private set; } = new();
