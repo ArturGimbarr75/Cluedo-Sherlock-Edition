@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
 		PlayerInformation mainPlayer = Players[0];
 		var (suspects, weapons, locations) = StreamingAssetsHelper.LoadCards();
 
+		InitSuspects(mainPlayer, suspects);
+		InitWeapons(mainPlayer, weapons);
+		InitLocations(mainPlayer, locations);
+	}
+
+	private void InitSuspects(PlayerInformation mainPlayer, Suspect suspects)
+	{
 		foreach (Suspect suspect in SUSPECTS)
 		{
 			if (suspects.HasFlag(suspect))
@@ -43,7 +50,10 @@ public class GameManager : MonoBehaviour
 					Players[i].Suspects.Add(suspect, OwnStatus.Unknown);
 			}
 		}
+	}
 
+	private void InitWeapons(PlayerInformation mainPlayer, Weapon weapons)
+	{
 		foreach (Weapon weapon in WEAPONS)
 		{
 			if (weapons.HasFlag(weapon))
@@ -59,7 +69,10 @@ public class GameManager : MonoBehaviour
 					Players[i].Weapons.Add(weapon, OwnStatus.Unknown);
 			}
 		}
+	}
 
+	private void InitLocations(PlayerInformation mainPlayer, Location locations)
+	{
 		foreach (Location location in LOCATIONS)
 		{
 			if (locations.HasFlag(location))
@@ -74,6 +87,16 @@ public class GameManager : MonoBehaviour
 				else
 					Players[i].Rooms.Add(location, OwnStatus.Unknown);
 			}
+		}
+	}
+
+	public void AddRequest(Request request)
+	{
+		foreach (PlayerInformation information in request.PlayersWithoutCards)
+		{
+			information.Suspects[request.Suspect] = OwnStatus.NotOwn;
+			information.Weapons[request.Weapon] = OwnStatus.NotOwn;
+			information.Rooms[request.Location] = OwnStatus.NotOwn;
 		}
 	}
 }
