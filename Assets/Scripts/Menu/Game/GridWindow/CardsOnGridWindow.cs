@@ -146,7 +146,7 @@ public class CardsOnGridWindow : MonoBehaviour
 
 			foreach (var player in players)
 			{
-				if (player.Rooms.TryGetValue(location, out var status))
+				if (player.Locations.TryGetValue(location, out var status))
 				{
 					if (status == OwnStatus.Own)
 					{

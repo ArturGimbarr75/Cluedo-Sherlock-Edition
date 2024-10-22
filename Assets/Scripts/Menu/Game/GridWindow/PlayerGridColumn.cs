@@ -106,7 +106,7 @@ public class PlayerGridColumn : MonoBehaviour
 
 		foreach (var room in _rooms)
 		{
-			if (information.Rooms.TryGetValue(room.Key, out OwnStatus status))
+			if (information.Locations.TryGetValue(room.Key, out OwnStatus status))
 			{
 				room.Value.sprite = status switch
 				{
