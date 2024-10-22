@@ -85,9 +85,7 @@ public class MoveWindowInitializer : MonoBehaviour
 			request.Requester = _gameManager.Players.FirstOrDefault(p => p.Name == requesterName);
 		}
 
-		if (_responderDropdown.value == 0)
-			return;
-		else
+		if (_responderDropdown.value != 0)
 		{
 			string responderName = _responderDropdown.options[_responderDropdown.value].text;
 			request.Responder = _gameManager.Players.FirstOrDefault(p => p.Name == responderName);

@@ -113,6 +113,9 @@ public class GameManager : MonoBehaviour
 
 		foreach (Request request in Requests)
 		{
+			if (request.Responder != player)
+				continue;
+
 			OwnStatus suspectStatus = player.Suspects[request.Suspect];
 			OwnStatus weaponsStatus = player.Weapons[request.Weapon];
 			OwnStatus locationStatus = player.Locations[request.Location];
