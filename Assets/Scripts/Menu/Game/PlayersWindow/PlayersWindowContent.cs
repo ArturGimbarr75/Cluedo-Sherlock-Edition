@@ -114,7 +114,7 @@ public class PlayersWindowContent : MonoBehaviour
 			};
 		}
 
-		foreach (var (room, status) in player.Rooms)
+		foreach (var (room, status) in player.Locations)
 		{
 			if (room == Location.None)
 				continue;

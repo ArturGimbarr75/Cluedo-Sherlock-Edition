@@ -3,12 +3,12 @@ using System.Collections.Generic;
 public class PlayerInformation
 {
     public string Name;
-    public int KnownCardsCount => Suspects.Count + Weapons.Count + Rooms.Count;
+    public int KnownCardsCount => Suspects.Count + Weapons.Count + Locations.Count;
 	public int TotalCardsCount;
 
     public Dictionary<Suspect, OwnStatus> Suspects { get; private set; } = new();
 	public Dictionary<Weapon, OwnStatus> Weapons { get; private set; } = new();
-	public Dictionary<Location, OwnStatus> Rooms { get; private set; } = new();
+	public Dictionary<Location, OwnStatus> Locations { get; private set; } = new();
 
 	public PlayerInformation(string name, int totalCardsCount = 0)
 	{
