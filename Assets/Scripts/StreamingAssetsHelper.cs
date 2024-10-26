@@ -5,8 +5,13 @@ using UnityEngine;
 
 public static class StreamingAssetsHelper
 {
+#if UNITY_ANDROID && !UNITY_EDITOR
+	private readonly static string PLAYERS_PATH = Path.Combine(Application.persistentDataPath, "Players.json");
+	private readonly static string CARDS_PATH = Path.Combine(Application.persistentDataPath, "Cards.txt");
+#else
 	private readonly static string PLAYERS_PATH = Path.Combine(Application.streamingAssetsPath, "Players.json");
 	private readonly static string CARDS_PATH = Path.Combine(Application.streamingAssetsPath, "Cards.txt");
+#endif
 
 	public static void SavePlayers(List<PlayerLine> playerLines)
 	{
