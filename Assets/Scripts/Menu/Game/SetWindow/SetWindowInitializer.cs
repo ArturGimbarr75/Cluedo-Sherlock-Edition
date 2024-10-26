@@ -23,10 +23,10 @@ public class SetWindowInitializer : MonoBehaviour
 
 	private void InitializeDropdowns()
 	{
-		_playersDropdown.InitializePlayersDropdowns(_gameManager);
-		_suspectsDropdown.InitializeSuspectsDropdown();
-		_weaponsDropdown.InitializeWeaponsDropdown();
-		_locationsDropdown.InitializeLocationsDropdown();
+		_playersDropdown.InitializePlayersDropdowns(_gameManager, includeNone: false);
+		_suspectsDropdown.InitializeSuspectsDropdown(includeNone: false);
+		_weaponsDropdown.InitializeWeaponsDropdown(includeNone: false);
+		_locationsDropdown.InitializeLocationsDropdown(includeNone: false);
 	}
 
 	private void ResetUI()

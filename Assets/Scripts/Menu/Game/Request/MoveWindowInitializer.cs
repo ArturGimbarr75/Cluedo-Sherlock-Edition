@@ -49,11 +49,11 @@ public class MoveWindowInitializer : MonoBehaviour
 
 	private void InitializeDropdowns()
 	{
-		_suspectsDropdown.InitializeSuspectsDropdown();
-		_weaponsDropdown.InitializeWeaponsDropdown();
-		_locationsDropdown.InitializeLocationsDropdown();
+		_suspectsDropdown.InitializeSuspectsDropdown(includeNone: false);
+		_weaponsDropdown.InitializeWeaponsDropdown(includeNone: false);
+		_locationsDropdown.InitializeLocationsDropdown(includeNone: false);
 
-		_requesterDropdown.InitializePlayersDropdowns(_gameManager);
+		_requesterDropdown.InitializePlayersDropdowns(_gameManager, includeNone: false);
 		_responderDropdown.InitializePlayersDropdowns(_gameManager);
 	}
 
@@ -64,7 +64,7 @@ public class MoveWindowInitializer : MonoBehaviour
 		request.Requester = _requesterDropdown.GetSelectedPlayer(_gameManager);
 		request.Responder = _responderDropdown.GetSelectedPlayer(_gameManager);
 
-		if (request.Requester is null || request.Responder is null)
+		if (request.Requester is null)
 			return;
 
 		request.Suspect = _suspectsDropdown.GetSelectedSuspect();
