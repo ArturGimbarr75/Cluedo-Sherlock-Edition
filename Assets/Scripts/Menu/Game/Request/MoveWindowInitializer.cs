@@ -49,28 +49,12 @@ public class MoveWindowInitializer : MonoBehaviour
 
 	private void InitializeDropdowns()
 	{
-		InitializeCardsDropdown(_suspectsDropdown, GameManager.SUSPECTS.Select(s => s.ToString()));
-		InitializeCardsDropdown(_weaponsDropdown, GameManager.WEAPONS.Select(w => w.ToString()));
-		InitializeCardsDropdown(_locationsDropdown, GameManager.LOCATIONS.Select(l => l.ToString()));
+		_suspectsDropdown.InitializeSuspectsDropdown();
+		_weaponsDropdown.InitializeWeaponsDropdown();
+		_locationsDropdown.InitializeLocationsDropdown();
 
-		InitializePlayersDropdowns();
-	}
-
-	private void InitializeCardsDropdown(TMP_Dropdown dropdown, IEnumerable<string> options)
-	{
-		dropdown.ClearOptions();
-		dropdown.AddOptions(new List<string>(options));
-	}
-
-	private void InitializePlayersDropdowns()
-	{
-		List<string> playerNames = _gameManager.Players.Select(p => p.Name).Prepend("None").ToList();
-
-		_requesterDropdown.ClearOptions();
-		_requesterDropdown.AddOptions(playerNames);
-
-		_responderDropdown.ClearOptions();
-		_responderDropdown.AddOptions(playerNames);
+		_requesterDropdown.InitializePlayersDropdowns(_gameManager);
+		_responderDropdown.InitializePlayersDropdowns(_gameManager);
 	}
 
 	public void SendRequest()
