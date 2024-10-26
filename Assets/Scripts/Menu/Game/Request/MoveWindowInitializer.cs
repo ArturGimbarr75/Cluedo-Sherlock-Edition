@@ -61,23 +61,15 @@ public class MoveWindowInitializer : MonoBehaviour
 	{
 		Request request = new();
 
-		if (_requesterDropdown.value == 0)
+		request.Requester = _requesterDropdown.GetSelectedPlayer(_gameManager);
+		request.Responder = _responderDropdown.GetSelectedPlayer(_gameManager);
+
+		if (request.Requester is null || request.Responder is null)
 			return;
-		else
-		{
-			string requesterName = _requesterDropdown.options[_requesterDropdown.value].text;
-			request.Requester = _gameManager.Players.FirstOrDefault(p => p.Name == requesterName);
-		}
 
-		if (_responderDropdown.value != 0)
-		{
-			string responderName = _responderDropdown.options[_responderDropdown.value].text;
-			request.Responder = _gameManager.Players.FirstOrDefault(p => p.Name == responderName);
-		}
-
-		request.Suspect = (Suspect)Enum.Parse(typeof(Suspect), _suspectsDropdown.options[_suspectsDropdown.value].text);
-		request.Weapon = (Weapon)Enum.Parse(typeof(Weapon), _weaponsDropdown.options[_weaponsDropdown.value].text);
-		request.Location = (Location)Enum.Parse(typeof(Location), _locationsDropdown.options[_locationsDropdown.value].text);
+		request.Suspect = _suspectsDropdown.GetSelectedSuspect();
+		request.Weapon = _weaponsDropdown.GetSelectedWeapon();
+		request.Location = _locationsDropdown.GetSelectedLocation();
 
 		if (request.Suspect == Suspect.None || request.Weapon == Weapon.None || request.Location == Location.None)
 			return;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 
@@ -39,5 +40,30 @@ public static class DropdownHelper
 
 		dropdown.ClearOptions();
 		dropdown.AddOptions(cards);
+	}
+
+	public static Suspect GetSelectedSuspect(this TMP_Dropdown dropdown)
+	{
+		return (Suspect)Enum.Parse(typeof(Suspect), dropdown.options[dropdown.value].text);
+	}
+
+	public static Weapon GetSelectedWeapon(this TMP_Dropdown dropdown)
+	{
+		return (Weapon)Enum.Parse(typeof(Weapon), dropdown.options[dropdown.value].text);
+	}
+
+	public static Location GetSelectedLocation(this TMP_Dropdown dropdown)
+	{
+		return (Location)Enum.Parse(typeof(Location), dropdown.options[dropdown.value].text);
+	}
+
+	public static PlayerInformation GetSelectedPlayer(this TMP_Dropdown dropdown, GameManager gameManager)
+	{
+		string playerName = dropdown.options[dropdown.value].text;
+
+		if (playerName == "None")
+			return null;
+
+		return gameManager.Players.FirstOrDefault(p => p.Name == playerName);
 	}
 }
